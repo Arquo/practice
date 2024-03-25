@@ -1,0 +1,10 @@
+var age = 100;
+var numbers = [1, 2, 3, 4, 5];
+var strings = ['apple', 'banana', 'orange'];
+var mixed = [1, 'two', true];
+var emptyArray = [];
+console.log(age);
+console.log(numbers);
+console.log(strings);
+console.log(mixed);
+console.log(emptyArray);
