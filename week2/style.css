@@ -1,0 +1,44 @@
+
+nav{
+    background-color:rgb(245, 204, 135);
+    color: rgb(239, 232, 232); 
+    padding: 50px;
+}
+img {
+    height: 200px;
+    float: right;
+}
+.head{
+    background-color:rgb(211, 244, 210);
+    color: rgb(45, 6, 6);
+
+}
+.paragraph{
+    background-color:rgb(211, 244, 210);
+    color: rgb(45, 6, 6);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+.title{
+    font-style: italic;
+}
+.aside_left {
+    width: 250px;
+    float: left; 
+    text-align: center;
+}
+.aside_right {
+    width: 250px;
+    float: right; 
+    text-align: center;
+}
+section {
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+
+
+
+
