@@ -1,0 +1,34 @@
+
+
+modern frontend frameworks
+
+Angular:
+- by google
+- component-based but complex
+- complex architectire and documentation
+- robust dependency 
+
+Vue: 
+- by Evan and a large community
+- simple, flexible, 
+- component-based, most straightforward
+- support advanced features
+
+React: 
+- by facebook
+- strong ecosystem, community
+- most popular 
+
+feature, 
+- virtal Document Object Model: to update the UI
+- reconciliation algorithm: efficent way to update DOM
+- component-based, unidirectional data flow: 
+- JSX: allow to wirte html in Js
+- Scalable, Flexible: 
+
+
+
+
+
+
+
