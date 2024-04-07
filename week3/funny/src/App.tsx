@@ -18,6 +18,11 @@ const App: React.FC = () => {
   const [lastscore, setLastScore] = useState(0);
   const [gameOver, setGameOver] = useState(false); // State to track if the game is over
   const [highestScore, setHighest] = useState(0); 
+  const randomText: string = "YOU ARE AMAZING";
+  const randomX = Math.random() * 1000
+  const randomY = Math.random() * 1000
+
+
   const gravity = 0.35;
   const maxHeight = 800; //screen size
   const ballSize = 100;
@@ -79,41 +84,44 @@ const App: React.FC = () => {
     top: ballY,
     left: '50%',
     backgroundColor: 'black',
+    color : 'white',
     width: `${ballSize}px`,
     height: `${ballSize}px`,
     borderRadius: '50%',
+    zIndex: 99
   };
-  const buttonStyle: React.CSSProperties = {
+  const randomTextStyle: React.CSSProperties = {
     position: 'absolute',
-    top: ballY+10,
-    left: '50.5%',
-    width: `${ballSize-20}px`,
-    height: `${ballSize-20}px`,
-    borderRadius: '50%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    color : 'white',
-    zIndex: 1, //on the top of other things
+    color: 'black',
+    top:  `${randomY}px`,
+    left: `${randomX}px`,
+    fontSize: '5em',
+    zIndex: 9
+
   };
 
-  //style={{marginLeft:'100px'}}
-  
   return (
     <div>
-      <section style={{marginLeft:'10%',marginTop:'10%', width:'25%'}}>
+      <section style={{marginLeft:'10%',marginTop:'10%'}}>
         <h2>HIGHEST SCORE: {highestScore}</h2>
-        <strong style={{fontSize:'10em'}}>{score}</strong>
+        <strong style={{fontSize:'10em'}}>{score} </strong>
         <h2>CURRENT SCORE ^ </h2>
-        <p>RULE: The score will be setted back to 0 when the ball hits the ground or the ceiling</p>
-        <p>IMPORTANT: stop cheating using spacebar</p>
+        <p>RULE: The score will be set back to 0 when the ball hits the ground or the ceiling</p>
+        <p>IMPORTANT: no cheating using the spacebar please!!!</p>
       </section>
       
       {gameOver && (   // if game over is true, then do the following
-      <h1 style={{position: 'absolute',top: '40%', left: '40%', zIndex:10}}>
-        Game Over!!! Your got: {lastscore}</h1>
+      <h1 style={{position: 'absolute',top: '40%', left: '35%', zIndex:10, fontSize: '4em'}}>
+        Game Over!!! Your got: {lastscore}!</h1>
       )}
 
-      <button style={buttonStyle} onClick={handleButtonClick} >Click Meeee!</button>
-      <div className="ball" style={ballStyle}></div>
+      <button style={ballStyle} onClick={handleButtonClick}>
+        {gameOver ? 'Restart' : 'Click Me'}
+      </button>
+
+      <div //coolest animation 
+       style={randomTextStyle}>{randomText}</div>
+
     </div>
   );
 };
