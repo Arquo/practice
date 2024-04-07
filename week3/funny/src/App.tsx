@@ -16,6 +16,8 @@ const App: React.FC = () => {
   const [velocity, setVelocity] = useState(0); // starting velocity
   const [score, setScore] = useState(0);
   const [lastscore, setLastScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false); // State to track if the game is over
+  const [highestScore, setHighest] = useState(0); 
   const gravity = 0.35;
   const maxHeight = 800; //screen size
   const ballSize = 100;
@@ -31,6 +33,10 @@ const App: React.FC = () => {
           setScore(0)
           if(score>0){
             setLastScore(score)
+            setGameOver(true)
+            if(score>highestScore){
+              setHighest(score)
+            }
           }
           return maxHeight - ballSize; 
         } else if (newY < 0) { // Ball hits the top
@@ -38,6 +44,11 @@ const App: React.FC = () => {
           setScore(0)
           if(score>0){
             setLastScore(score)
+            setGameOver(true)
+            setBallY(800)
+            if(score>highestScore){
+              setHighest(score)
+            }
           }
           return 0;
         } else { // Ball is  in the air
@@ -56,9 +67,11 @@ const App: React.FC = () => {
   // 2. inside animation loop, when ball is in air
 
 
+
   const handleButtonClick = () => {
     setVelocity(-10); // Apply upward force
     setScore(prevScore=>prevScore+1)
+    setGameOver(false)
   };
 
   const ballStyle: React.CSSProperties = {
@@ -82,17 +95,23 @@ const App: React.FC = () => {
     zIndex: 1, //on the top of other things
   };
 
-  
+  //style={{marginLeft:'100px'}}
   
   return (
-    <div className='App'>
-      <section>
-        <h2>LAST SCORE: {lastscore}</h2>
-        <h2>CURRENT SCORE: {score}</h2>
-        <p>RULE: Score will be set back to 0 when the ball hits the ground or the ceiling</p>
+    <div>
+      <section style={{marginLeft:'10%',marginTop:'10%', width:'25%'}}>
+        <h2>HIGHEST SCORE: {highestScore}</h2>
+        <strong style={{fontSize:'10em'}}>{score}</strong>
+        <h2>CURRENT SCORE ^ </h2>
+        <p>RULE: The score will be setted back to 0 when the ball hits the ground or the ceiling</p>
         <p>IMPORTANT: stop cheating using spacebar</p>
-
       </section>
+      
+      {gameOver && (   // if game over is true, then do the following
+      <h1 style={{position: 'absolute',top: '40%', left: '40%', zIndex:10}}>
+        Game Over!!! Your got: {lastscore}</h1>
+      )}
+
       <button style={buttonStyle} onClick={handleButtonClick} >Click Meeee!</button>
       <div className="ball" style={ballStyle}></div>
     </div>
